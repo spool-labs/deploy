@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 WorkingDirectory=/root/apps/tapedrive
-ExecStart=/root/apps/tapedrive/target/release/tapedrive archive -u {{CLUSTER}}
+ExecStart=/root/apps/tapedrive/tapedrive archive -u {{CLUSTER}}
 Restart=always
 RestartSec=5
 Environment=RUST_LOG=info

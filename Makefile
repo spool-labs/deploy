@@ -90,10 +90,12 @@ upgrade:
 
 configure:
 	@echo "🔧 Setting up tapedrive.config interactively..."
-	@read -p "Enter your SSH remote (e.g. root@123.123.123.123): " remote && \
+	@read -p "Enter your SSH remote (e.g. root@0.0.0.0): " remote && \
 	 read -p "Enter the domain to use for the mining node: " domain && \
-	 read -p "Enter the Solana cluster to mine on (devnet, mainnet, etc): " cluster && \
 	 echo "REMOTE = $$remote" > tapedrive.config && \
 	 echo "DOMAIN = $$domain" >> tapedrive.config && \
-	 echo "CLUSTER = $$cluster" >> tapedrive.config && \
+	 echo "CLUSTER = d" >> tapedrive.config && \
 	 echo "" && echo "✅ tapedrive.config created successfully."
+
+# read -p "Enter the Solana cluster to use (Use: l, m, d, t, or a valid RPC URL (http:// or https://)): " cluster && \
+# echo "CLUSTER = $$cluster" >> tapedrive.config && \

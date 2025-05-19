@@ -1,10 +1,17 @@
-# TAPEDRIVE - DEPLOY
+# TAPEDRIVE - deploy
+
+![image](https://github.com/user-attachments/assets/bf674eb1-512d-47e7-a9c5-e0d0e44c6edb)
 
 This repository contains everything you need to deploy a fully functioning reference TAPEDRIVE node — including archive, miner, and web services — using NGINX, and the official `tapedrive-cli` published on crates.io. 
 
 This script is designed to be run on a remote server, and it will install all necessary dependencies, configure systemd services, and set up NGINX for you.
 
 You can run all three roles (archive, mine, and web) on the same machine, and setup only takes a few minutes.
+
+> [!WARNING]
+> This is a reference implementation. It is not intended for production use. Use at your own risk. 
+>
+> **Only DEVNET is supported at this time.**
 
 ---
 
@@ -50,8 +57,11 @@ This will:
 - Install `tapedrive-cli` from crates.io
 - Render config files from templates
 - Upload and enable systemd services
-- Optionally upload or retrieve `miner.json` identity file
+- Optionally upload or retrieve `./deploy/miner.json` identity file
 - Configure NGINX and UFW
+
+> [!IMPORTANT]
+> You can pre-create a `miner.json` file using the `solana-keygen` command. This will allow you to use a specific identity for your miner. If you don't have a `miner.json` file, the script will create one for you. It will be placed into the `./deploy/` directory automatically if everithing goes well. Check the logs if you need to troubleshoot.
 
 ---
 
@@ -62,6 +72,15 @@ make logs-tapemine
 make logs-tapearchive
 make logs-tapeweb
 ```
+
+> [!IMPORTANT]
+> **You will need to fund your miner with some SOL** to get started. You can do this by sending SOL to the address in `./deploy/miner.json`.
+> First, check the SOL address of your miner by running:
+> ```bash
+> solana address -k deploy/miner.json
+> ```
+>
+> Then, fund your miner with some SOL using the Solana CLI or a wallet.
 
 ---
 
