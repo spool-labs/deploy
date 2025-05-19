@@ -1,8 +1,9 @@
-# TAPEDRIVE - deploy
+# TAPENET - deploy
 
-![image](https://github.com/user-attachments/assets/bf674eb1-512d-47e7-a9c5-e0d0e44c6edb)
+![image](https://github.com/user-attachments/assets/5b1fa103-0814-4ed4-966d-c9cb1aafeb2f)
 
-This repository contains everything you need to deploy a fully functioning reference TAPEDRIVE node — including archive, miner, and web services — using NGINX, and the official `tapedrive-cli` published on crates.io. 
+
+This repository contains everything you need to deploy a fully functioning **reference** TAPEDRIVE node — including archive, miner, and web services — using NGINX, and the official `tapedrive-cli` published on crates.io. 
 
 This script is designed to be run on a remote server, and it will install all necessary dependencies, configure systemd services, and set up NGINX for you.
 
@@ -17,7 +18,7 @@ You can run all three roles (archive, mine, and web) on the same machine, and se
 
 ## 📦 Prerequisites
 
-- A remote Ubuntu server (24.04 recommended, but 22.04 should work too)
+- **A remote Ubuntu server** (24.04 recommended, but 22.04 should work too)
 - DNS configured for your domain if you want to serve HTTPS
 - Access via SSH (key-based)
 
