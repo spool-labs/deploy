@@ -5,7 +5,7 @@
 
 This repository contains everything you need to deploy a fully functioning **reference** TAPEDRIVE node — including archive, miner, and web services — using NGINX, and the official `tapedrive-cli` published on crates.io. 
 
-This script is designed to be run on a remote server, and it will install all necessary dependencies, configure systemd services, and set up NGINX for you.
+This script is designed to be run on against a remote server, and it will install all necessary dependencies, configure systemd services, and set up NGINX for you.
 
 You can run all three roles (archive, mine, and web) on the same machine, and setup only takes a few minutes.
 
