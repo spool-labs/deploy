@@ -50,8 +50,6 @@ This will prompt you for:
 
 - SSH address to your server (e.g. `root@123.123.123.123`)
 - Domain you plan to serve from (e.g. `node.tapedrive.io`)
-- Solana cluster to use (`devnet`, `testnet`, or `mainnet`)
-- A name for your miner
 
 This will create a `tapedrive.config` file used by the Makefile.
 
