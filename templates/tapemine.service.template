@@ -1,0 +1,15 @@
+[Unit]
+Description=TAPEDRIVE Mining Service
+After=network.target
+
+[Service]
+WorkingDirectory=/root/apps/tapedrive
+ExecStart=/root/apps/tapedrive/target/release/tapedrive mine -u {{CLUSTER}}
+Restart=always
+RestartSec=5
+Environment=RUST_LOG=info
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

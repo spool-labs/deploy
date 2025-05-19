@@ -1,0 +1,8 @@
+# The hostname of your mining node
+REMOTE = root@123.123.123.123
+
+# The domain that you'd like to use for the mining node
+DOMAIN = your-node.example.com
+
+# The Solana cluster this node will mine on
+CLUSTER = devnet
