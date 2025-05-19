@@ -171,24 +171,8 @@ You can see a full list of RPC endpoints [here](https://docs.rs/tape-network/lat
 - `deploy/` is where rendered configs live before upload
 - `Makefile` manages everything with simple commands
 
-There are a few more commands available in the Makefile, including:
-- `make ssh` to SSH into your server quickly
-- `make setup-firewall` to configure UFW
-- `make certbot` to configure Certbot for HTTPS
-- etc... 
-
 Check the Makefile for all available commands.
 
----
-
-## 🧪 Example Commands
-
-```bash
-make configure
-make setup
-make deploy
-make logs-tapearchive
-```
 
 ---
 
