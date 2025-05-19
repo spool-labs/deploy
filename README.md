@@ -19,7 +19,6 @@ You can run all three roles (archive, mine, and web) on the same machine, and se
 ## 📦 Prerequisites
 
 - **A remote Ubuntu server** (24.04 recommended, but 22.04 should work too)
-- DNS configured for your domain if you want to serve HTTPS
 - Access via SSH (key-based)
 
 This script has been tested against AWS, DigitalOcean, and a few other providers. It should work on any fresh Ubuntu server, but if you run into issues, please open an issue. 
