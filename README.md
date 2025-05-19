@@ -9,9 +9,21 @@ This script is designed to be run on a remote server, and it will install all ne
 You can run all three roles (archive, mine, and web) on the same machine, and setup only takes a few minutes.
 
 > [!WARNING]
-> This is a reference implementation. It is not intended for production use. Use at your own risk. 
+> **This is an early reference implementation**. It is not intended for production use. Use at your own risk. 
 >
 > **Only DEVNET is supported at this time.**
+
+---
+
+## 📦 Prerequisites
+
+- A remote Ubuntu server (24.04 recommended, but 22.04 should work too)
+- DNS configured for your domain if you want to serve HTTPS
+- Access via SSH (key-based)
+
+This script has been tested against AWS, DigitalOcean, and a few other providers. It should work on any fresh Ubuntu server, but if you run into issues, please open an issue. 
+
+The script compiles everything from source, so it may take a while to run. Binary releases will come soon.
 
 ---
 
@@ -112,6 +124,46 @@ make snapshot
 
 This will create a snapshot of the archive node and download it to your local machine. This is useful for backup purposes or if you want to run a local archive node.
 
+--- 
+
+## 🛠️ Troubleshooting
+
+If you run into issues, check the logs for each service:
+
+```bash
+make logs-tapemine
+make logs-tapearchive
+make logs-tapeweb
+```
+
+If you need to SSH into your server, you can do so with:
+
+```bash
+make ssh
+```
+
+If you did everything correctly, you should see RPC responses from your server for these commands:
+
+**Health check:**
+```bash
+curl -X POST http://<your_server>/api \
+  -H 'Content-Type: application/json' \
+  -d '{"jsonrpc":"2.0","id":1,"method":"getHealth"}'
+
+> {"jsonrpc":"2.0","result":{"drift":0,"last_processed_slot":381995763},"id":5}
+```
+
+**Get tape address:**
+```bash
+curl -X POST http://<your_server>/api \
+  -H 'Content-Type: application/json' \
+  -d '{"jsonrpc":"2.0","id":1,"method":"getTapeAddress","params":{"tape_number":1}}'
+
+> {"jsonrpc":"2.0","result":"BEB4TSSg2k2jKR8rnSKFeaEvNdxKaMv3EQCVBAUaEUPM","id":1}
+```
+
+You can see a full list of RPC endpoints [here](https://docs.rs/tape-network/latest/tape_network/web/index.html).
+
 ---
 
 ## 🧠 What’s Included
@@ -128,14 +180,6 @@ There are a few more commands available in the Makefile, including:
 - etc... 
 
 Check the Makefile for all available commands.
-
----
-
-## 🛠 Requirements
-
-- A remote Ubuntu server (24.04 recommended)
-- DNS configured for your domain if you want to serve HTTPS
-- Access via SSH (password or key-based)
 
 ---
 

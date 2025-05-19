@@ -1,4 +1,3 @@
-# Load deployment config
 -include tapedrive.config
 
 APP_DIR=~/apps/tapedrive
@@ -7,7 +6,7 @@ SERVICES=tapearchive tapemine tapeweb
 DEPLOY_DIR=deploy
 TEMPLATES_DIR=templates
 
-.PHONY: render-configs ssh deploy setup deploy-services logs-% certbot snapshot configure
+.PHONY: render-configs ssh deploy setup deploy-services logs-% certbot snapshot configure setup-firewal upgrade
 
 require-config:
 ifndef REMOTE
@@ -66,8 +65,11 @@ setup: render-configs
 	    echo "⚠️ Warning: miner.json not found on remote either."; \
 	fi
 
-	scp $(DEPLOY_DIR)/nginx.conf $(REMOTE):/etc/nginx/sites-available/tapedrive
+	ssh $(REMOTE) 'rm -f /etc/nginx/sites-enabled/default && nginx -t && systemctl reload nginx'
+	scp deploy/nginx.conf $(REMOTE):/etc/nginx/sites-available/tapedrive
 	ssh $(REMOTE) 'ln -sf /etc/nginx/sites-available/tapedrive /etc/nginx/sites-enabled/tapedrive && nginx -t && systemctl reload nginx'
+
+setup-firewall:
 	ssh $(REMOTE) 'ufw allow 80/tcp && ufw allow 443/tcp && ufw allow 22/tcp && ufw deny 3000/tcp && ufw reload'
 
 deploy: require-config
