@@ -98,6 +98,11 @@ setup-binary:
 	ssh $(REMOTE) 'bash ~/setup-binary.sh'
 	$(MAKE) common-post-setup
 
+.PHONY: install
+install:
+	scp ./scripts/install.sh $(REMOTE):~
+	ssh $(REMOTE) 'bash ~/install.sh'
+
 setup-firewall:
 	ssh $(REMOTE) 'ufw allow 80/tcp && ufw allow 443/tcp && ufw allow 22/tcp && ufw deny 3000/tcp && ufw reload'
 
