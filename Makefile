@@ -133,5 +133,5 @@ configure:
 	 echo "DOMAIN = $$domain"   >> tapedrive.config && \
 	 echo "CLUSTER = $$cluster" >> tapedrive.config && \
 	 echo "BUILD_METHOD = $$method" >> tapedrive.config && \
-	 echo "" && echo "✅ tapedrive.config created with BUILD_METHOD=$$method."
+	 echo "" && echo "✅ tapedrive.config created with BUILD_METHOD=$$method." && \
 	 echo "" && echo "🔧 Run 'make setup' to set up the server." && echo "" 
