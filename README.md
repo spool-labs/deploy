@@ -1,10 +1,11 @@
-# TAPEDRIVE - deploy
+# TAPENET - deploy
 
-![image](https://github.com/user-attachments/assets/bf674eb1-512d-47e7-a9c5-e0d0e44c6edb)
+![image](https://github.com/user-attachments/assets/5b1fa103-0814-4ed4-966d-c9cb1aafeb2f)
 
-This repository contains everything you need to deploy a fully functioning reference TAPEDRIVE node — including archive, miner, and web services — using NGINX, and the official `tapedrive-cli` published on crates.io. 
 
-This script is designed to be run on a remote server, and it will install all necessary dependencies, configure systemd services, and set up NGINX for you.
+This repository contains everything you need to deploy a fully functioning **reference** TAPEDRIVE node — including archive, miner, and web services — using NGINX, and the official `tapedrive-cli` published on crates.io. 
+
+This script is designed to be run on against a remote server, and it will install all necessary dependencies, configure systemd services, and set up NGINX for you.
 
 You can run all three roles (archive, mine, and web) on the same machine, and setup only takes a few minutes.
 
@@ -17,8 +18,7 @@ You can run all three roles (archive, mine, and web) on the same machine, and se
 
 ## 📦 Prerequisites
 
-- A remote Ubuntu server (24.04 recommended, but 22.04 should work too)
-- DNS configured for your domain if you want to serve HTTPS
+- **A remote Ubuntu server** (24.04 recommended, but 22.04 should work too)
 - Access via SSH (key-based)
 
 This script has been tested against AWS, DigitalOcean, and a few other providers. It should work on any fresh Ubuntu server, but if you run into issues, please open an issue. 
@@ -50,8 +50,6 @@ This will prompt you for:
 
 - SSH address to your server (e.g. `root@123.123.123.123`)
 - Domain you plan to serve from (e.g. `node.tapedrive.io`)
-- Solana cluster to use (`devnet`, `testnet`, or `mainnet`)
-- A name for your miner
 
 This will create a `tapedrive.config` file used by the Makefile.
 
@@ -148,7 +146,7 @@ If you did everything correctly, you should see RPC responses from your server f
 ```bash
 curl -X POST http://<your_server>/api \
   -H 'Content-Type: application/json' \
-  -d '{"jsonrpc":"2.0","id":1,"method":"getHealth"}'
+  -d '{"jsonrpc":"2.0","id":1,"method":"getHealth", "params":{}}'
 
 > {"jsonrpc":"2.0","result":{"drift":0,"last_processed_slot":381995763},"id":5}
 ```
@@ -173,24 +171,8 @@ You can see a full list of RPC endpoints [here](https://docs.rs/tape-network/lat
 - `deploy/` is where rendered configs live before upload
 - `Makefile` manages everything with simple commands
 
-There are a few more commands available in the Makefile, including:
-- `make ssh` to SSH into your server quickly
-- `make setup-firewall` to configure UFW
-- `make certbot` to configure Certbot for HTTPS
-- etc... 
-
 Check the Makefile for all available commands.
 
----
-
-## 🧪 Example Commands
-
-```bash
-make configure
-make setup
-make deploy
-make logs-tapearchive
-```
 
 ---
 
