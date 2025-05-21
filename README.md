@@ -146,7 +146,7 @@ If you did everything correctly, you should see RPC responses from your server f
 ```bash
 curl -X POST http://<your_server>/api \
   -H 'Content-Type: application/json' \
-  -d '{"jsonrpc":"2.0","id":1,"method":"getHealth"}'
+  -d '{"jsonrpc":"2.0","id":1,"method":"getHealth", "params":{}}'
 
 > {"jsonrpc":"2.0","result":{"drift":0,"last_processed_slot":381995763},"id":5}
 ```
