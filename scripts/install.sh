@@ -65,7 +65,7 @@ else
     | grep '"tag_name":' | head -n1 | cut -d '"' -f4) \
     || error 'failed to fetch latest release'
 fi
-info_bold "⬇️  Installing tapedrive $TAG…"
+info_bold "⬇️  Installing tapedrive ${TAG}…"
 
 # ─── Platform mapping & musl preference ────────────────────────────────────────
 case $platform in
@@ -100,7 +100,7 @@ URI="$BUCKET/$TAG/$ARCHIVE"
 tmp=$(mktemp -d)
 trap 'rm -rf "$tmp"' EXIT
 
-info "⬇️  Downloading $ARCHIVE…"
+info "⬇️  Downloading ${ARCHIVE}…"
 curl --fail --location --progress-bar --output "$tmp/$ARCHIVE" "$URI" \
   || error "failed to download $ARCHIVE"
 
@@ -113,7 +113,7 @@ tar -xzf "$tmp/$ARCHIVE" -C "$install_dir/bin" \
 # ─── Post-install ─────────────────────────────────────────────────────────────
 exe="$install_dir/bin/tapedrive"
 chmod +x "$exe" || error "failed to make executable"
-success "✅ tapedrive $TAG installed to $Bold_Green$(tildify "$exe")${Color_Off}"
+success "✅ tapedrive ${TAG} installed to $Bold_Green$(tildify "$exe")${Color_Off}"
 
 # ─── Add to PATH ──────────────────────────────────────────────────────────────
 install_env=TAPE_INSTALL

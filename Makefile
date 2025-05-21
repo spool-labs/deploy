@@ -7,10 +7,10 @@ DEPLOY_DIR=deploy
 TEMPLATES_DIR=templates
 
 .PHONY: render-configs ssh logs-% certbot snapshot \
-        get-binary build-binary \
+        get-binary build-binary build-darwin \
         setup setup-source setup-binary common-post-setup \
         setup-firewall deploy deploy-services \
-        upgrade configure require-config
+        upgrade configure require-config install
 
 require-config:
 ifndef REMOTE
