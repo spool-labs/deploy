@@ -70,6 +70,8 @@ If you selected **source**, it will compile from source (may take a while).
     make logs-tapeweb
 ```
 
+If you don't see any logs, you might need to reboot your machine. On some Linux distros (especially cloud images or custom setups), `journald` doesn't properly initialize persistent storage or attach to early services until after a reboot.
+
 > [!IMPORTANT]
 > **You will need to fund your miner with some SOL** to get started. You can do this by sending SOL to the address in ./deploy/miner.json.
 >
