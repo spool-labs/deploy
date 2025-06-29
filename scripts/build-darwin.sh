@@ -40,7 +40,7 @@ mkdir -p "$out_dir"
 # ── 4) Determine release tag ─────────────────────────────────────────────────
 echo "🔍  Fetching latest release tag..."
 if [[ "$tag" == "latest" ]]; then
-  tag=$(curl -sSf https://api.github.com/repos/tapedrive-io/tape/releases/latest \
+  tag=$(curl -sSf https://api.github.com/repos/spool-labs/tape/releases/latest \
     | grep '"tag_name":' | head -n1 | cut -d '"' -f4)
 fi
 info_tag="$tag"
@@ -60,7 +60,7 @@ else
   echo "📥 Source not found; cloning tapedrive $info_tag..."
   build_dir=$(mktemp -d)
   trap 'rm -rf "$build_dir"' EXIT
-  git clone --branch "$info_tag" --depth 1 https://github.com/tapedrive-io/tape.git "$build_dir"
+  git clone --branch "$info_tag" --depth 1 https://github.com/spool-labs/tape.git "$build_dir"
 fi
 
 # ── 7) Build & package for each target ────────────────────────────────────────
