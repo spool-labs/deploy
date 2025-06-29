@@ -24,7 +24,7 @@ The setup script can run a `source build` or download a `pre-built binary`. Bina
 
 ### 1. Clone this repo
 ```
-    git clone https://github.com/tapedrive-io/tape-deploy.git
+    git clone https://github.com/spool-labs/deploy.git
     cd tape-deploy
 ```
 
