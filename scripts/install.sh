@@ -2,7 +2,7 @@
 set -euo pipefail
 
 # ──────────────────────────────────────────────────────────────────────────────
-# tapedrive installer — https://github.com/tapedrive-io/tape
+# tapedrive installer — https://github.com/spool-labs/tape
 # Usage: curl -fsSL https://tapedrive.io/install.sh | bash [<version>]
 # If no version is given, installs latest release.
 # ──────────────────────────────────────────────────────────────────────────────
@@ -61,7 +61,7 @@ if [[ $# -eq 1 ]]; then
   TAG="$1"
 else
   info '🔍  Fetching latest release…'
-  TAG=$(curl -sSf https://api.github.com/repos/tapedrive-io/tape/releases/latest \
+  TAG=$(curl -sSf https://api.github.com/repos/spool-labs/tape/releases/latest \
     | grep '"tag_name":' | head -n1 | cut -d '"' -f4) \
     || error 'failed to fetch latest release'
 fi
@@ -93,7 +93,7 @@ if [[ $target == x86_64-darwin ]]; then
 fi
 
 # ─── Download & extract ───────────────────────────────────────────────────────
-BUCKET="https://github.com/tapedrive-io/tape/releases/download"
+BUCKET="https://github.com/spool-labs/tape/releases/download"
 ARCHIVE="tapedrive-${target}.tar.gz"
 URI="$BUCKET/$TAG/$ARCHIVE"
 
