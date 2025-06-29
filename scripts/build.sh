@@ -51,7 +51,7 @@ export CARGO_TARGET_X86_64_UNKNOWN_LINUX_MUSL_LINKER="x86_64-linux-musl-g++"
 # ── 6) Clone and build the static binary ─────────────────────────────────────
 echo "🔧  Building static tapedrive binary..."
 BUILD_DIR=$(mktemp -d /tmp/tape-build-XXXX)
-git clone --depth 1 https://github.com/tapedrive-io/tape.git "$BUILD_DIR"
+git clone --depth 1 https://github.com/spool-labs/tape.git "$BUILD_DIR"
 pushd "$BUILD_DIR" >/dev/null
 
 # Ensure build scripts run on host (no global static flags)
