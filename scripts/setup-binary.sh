@@ -15,7 +15,7 @@ mkdir -p ~/apps/tapedrive
 
 # Fetch the latest release tag from GitHub API
 echo "🔍 Querying GitHub for latest release…"
-LATEST_JSON=$(curl -s https://api.github.com/repos/tapedrive-io/tape/releases/latest)
+LATEST_JSON=$(curl -s https://api.github.com/repos/spool-labs/tape/releases/latest)
 RELEASE_TAG=$(echo "$LATEST_JSON" | grep '"tag_name":' | head -n1 | cut -d '"' -f4)
 
 if [ -z "$RELEASE_TAG" ]; then
@@ -26,7 +26,7 @@ echo "✅ Found latest release: $RELEASE_TAG"
 
 # Build the download URL for x86_64 Linux MUSL
 TARBALL="tapedrive-x86_64-linux-musl.tar.gz"
-DOWNLOAD_URL="https://github.com/tapedrive-io/tape/releases/download/${RELEASE_TAG}/${TARBALL}"
+DOWNLOAD_URL="https://github.com/spool-labs/tape/releases/download/${RELEASE_TAG}/${TARBALL}"
 
 echo "⬇️  Downloading $TARBALL from $DOWNLOAD_URL…"
 curl -L "$DOWNLOAD_URL" | tar -xz -C ~/apps/tapedrive
