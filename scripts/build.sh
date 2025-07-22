@@ -48,6 +48,9 @@ export CC_x86_64_unknown_linux_musl="x86_64-linux-musl-gcc"
 export CXX_x86_64_unknown_linux_musl="x86_64-linux-musl-g++"
 export CARGO_TARGET_X86_64_UNKNOWN_LINUX_MUSL_LINKER="x86_64-linux-musl-g++"
 
+# Force‑include <cstdint> in every C++ compile, (helps on Fedora)
+# export CXXFLAGS="$CXXFLAGS -include cstdint"
+
 # ── 6) Clone and build the static binary ─────────────────────────────────────
 echo "🔧  Building static tapedrive binary..."
 BUILD_DIR=$(mktemp -d /tmp/tape-build-XXXX)
